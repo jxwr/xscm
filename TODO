@@ -1,0 +1,11 @@
+
+[] backquote read macro
+[] quote
+  - '100 === 100 
+  - 'abc is symbol abc
+  - 'list is a list
+  - there is no such thing QUOTE_T
+[] add string, float
+[] rethink scope
+[] redo list implementation
+[] new boolean value
