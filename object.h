@@ -1,6 +1,6 @@
 #pragma once
 
-#define DEBUG 1
+#define DEBUG 0
 
 #include "lexer.h"
 #include "sexpr.h"

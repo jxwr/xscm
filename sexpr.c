@@ -68,16 +68,18 @@ sexpr_t* read_list(lexer_t* lexer)
 
 sexpr_t* read_quote(lexer_t* lexer)
 {
-  quote_sexpr_t* quote;
   sexpr_t* expr;
-
-  quote = (quote_sexpr_t*)malloc(sizeof(quote_sexpr_t));
-  quote->type = SEXPR_QUOTE;
-  
   expr = read_sexpr(lexer);
-  quote->expr = expr;
 
-  return as_sexpr(quote);
+  if(expr->type != SEXPR_NUM && expr->type != SEXPR_QUOTE) {
+      quote_sexpr_t* quote;
+      quote = (quote_sexpr_t*)malloc(sizeof(quote_sexpr_t));
+      quote->type = SEXPR_QUOTE;
+      quote->expr = expr;
+      expr = as_sexpr(quote);
+  }
+
+  return expr;
 }
 
 sexpr_t* read_sexpr(lexer_t* lexer)

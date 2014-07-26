@@ -1,12 +1,11 @@
 ## xscm
 
-Dirty scheme interpreter, not done yet.
+Simple scheme interpreter, not done yet.
 
 * [ ] support simple macro, no reader macro yet, write macro with pure quote expr.
 * [ ] support basic binary operations, > < = % + - * / .
 * [ ] no gc!
-* [ ] no vm! eval ast directly.
-* [ ] quote implementation totally wrong.
+* [ ] no vm!
 
 ## Examples
 
@@ -129,7 +128,21 @@ test/test8.scm
 '(1 2 3 4)
 ```
 
-output
+simple output
+```
+100 
+#<fn:0x1890640> 45 
+(5 10 15) 
+25 
+399811
+(399811 7205721 43223631)
+'a
+1
+1
+'(1 2 3 4)
+```
+
+debug output
 ```
 *MACRO-EXPANSION*:
   (set (quote f-body) (lambda (e) (cond ((atom e) e) ((= (cdr e) ()) (car e)) (t (cons 'progn e)))))
@@ -390,7 +403,7 @@ output
   ((lambda (a b) (+ (* x (square a)) (* y b) (* a b))) (+ 1 (* x y)) (- 1 y))
 (399811 7205721 43223631)
 'a
-'1
+1
 1
 '(1 2 3 4)
 ```
